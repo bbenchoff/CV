@@ -8,9 +8,12 @@
 
 \documentclass[11pt,letterpaper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
 
+% Disable microtype's font expansion to fix compatibility issue
+\microtypesetup{expansion=false}
+
 % moderncv themes
-\moderncvstyle{casual}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
-\moderncvcolor{orange}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+\moderncvstyle{banking}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+\moderncvcolor{burgundy}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
 %\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
 %\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
 
@@ -25,7 +28,7 @@
 
 % personal data
 \name{Brian}{Benchoff}
-\title{Embedded Engineer}                               % optional, remove / comment the line if not wanted
+\title{Prototype Engineer}                               % optional, remove / comment the line if not wanted
 %\born{4 July 1776}                                 % optional, remove / comment the line if not wanted
 \address{3033 Rivera St}{94116 San Francisco}{USA}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
 \phone[mobile]{+1~(215)~690~1415}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
@@ -82,14 +85,15 @@
 
 %\section{Master thesis}
 %\cvitem{title}{\emph{Title}}
-%\cvitem{supervisors}{Supervisors}
+%\cvitem{supervisors}{Supervisors}xtures
 %\cvitem{description}{Short thesis abstract}
 
 \section{Experience}
 \subsection{Vocational}
-\cventry{2011-2018}{Editor}{Hackaday}{Pasadena, CA}{}{Wrote, edited, produced content for weblog Hackaday. Designed hardware products and projects.\newline{}}
+\cventry{2022-Present}{Prototype Engineer}{Span.io}{San Francisco}{}{Developed novel data acquisition unit for isolated thermocouple measurement using RP2040 microcontroller, C, Modbus, and Ethernet interfaces. Created comprehensive data acquisition system with Flask/React web interface and Python backend supporting multiple hardware interfaces (NIDAQ, ADAM, LabJack). Designed and fabricated specialized test rigs and prototypes using KiCad PCB design and 3D printing. Built test fixtures and cable harnesses for UL AFCI/GFCI compliance testing. Implemented V2G (Vehicle-to-Grid) home backup power solution prototype utilizing Nissan Leaf with CHAdeMO interface.\newline}
+\cventry{2016-2022}{Embedded Engineer, Product Designer}{Self-Employed}{San Francisco}{}{Designed, built, and sold consumer electronics. This included 3D CAD Fusion360, AutoCAD, PCB design Eagle, KiCAD, Design for Manufacturability and Design for Assembly. Closely integrated with PCB assembly, up to and including running pick and place machines. Fabrication of 3D printed and injection molded parts in plastic and silicone. Designed, marketed, and sold several successful products.\newline}
 \cventry{2018-Present}{Content Specialist}{Supplyframe}{Pasadena, CA}{}{Produced electronic design and engineering content, engaged with engineers regarding new products. Responsible for hardware projects, PCB \& firmware design. 3D modeling, injection molded and 3D printed plastic and silicone.\newline{}}
-\cventry{2016-Present}{Embedded Engineer, Product Designer}{Self-Employed}{San Francisco}{}{Designed, built, and sold consumer electronics. This included 3D CAD Fusion360, AutoCAD, PCB design Eagle, KiCAD, Design for Manufacturability and Design for Assembly. Closey integrated with PCB assembly, up to and including running pick and place machines. Fabrication of 3D printed and injection molded parts in plastic and silicone. Designed, marketed, and sold several successful products.\newline}
+\cventry{2011-2018}{Editor}{Hackaday}{Pasadena, CA}{}{Wrote, edited, produced content for weblog Hackaday. Designed hardware products and projects.\newline{}}
 
 %\section{Languages}
 %\cvitemwithcomment{Language 1}{Skill level}{Comment}
@@ -99,7 +103,7 @@
 
 \section{Skills}
 \cvdoubleitem{Languages}{C, C++, Python, \LaTeX, SQL}{Graphic}{Adobe Photoshop, Illustrator, Premiere}
-\cvdoubleitem{Mechanical CAD}{Fusion360, AutoCAD, \newline OpenSCAD}{Platforms}{x86, 8085, AVR, ARM Cortex-M (M0 \& M4), Tensilica, 68000, Linux SoCs (Microchip, Allwinner)}
+\cvdoubleitem{Mechanical CAD}{Fusion360, AutoCAD, \newline OpenSCAD}{Platforms}{x86, 8085, AVR, ARM Cortex-M (M0 \& M4), RP2040/2350 PIO, Linux SoCs (Microchip, Allwinner)}
 \cvdoubleitem{Electronic CAD}{Altium, Eagle, KiCAD}{Misc}{Microsoft Office, 3D Printing, \newline Rapid Prototyping, Industrial Design}
 \cvdoubleitem{Embedded}{I2C, SPI, Serial, Parallel interfaces, USB, USB-C, HDMI, PCIe, eMMC}{PCB}{BGA, Down to 2/2mil trace/space, 010005 components}
 \cvdoubleitem{Embedded Linux}{Buildroot, Yocto}{Mechanical}{Injection molding in plastic and silicone, machining}
@@ -197,7 +201,7 @@
 %\bibliographystylemisc{plain}
 %\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
 
-\clearpage
+
 \end{document}
 %-----       letter       ---------------------------------------------------------
 % recipient data
