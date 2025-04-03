@@ -5,8 +5,7 @@
 % conditions of the LaTeX Project Public License version 1.3c,
 % available at http://www.latex-project.org/lppl/.
 
-
-\documentclass[11pt,letterpaper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+\documentclass[10pt,letterpaper,roman]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
 
 % Disable microtype's font expansion to fix compatibility issue
 \microtypesetup{expansion=false}
@@ -14,63 +13,69 @@
 % moderncv themes
 \moderncvstyle{banking}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
 \moderncvcolor{burgundy}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
-%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
-%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
-
-% character encoding
-%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
-%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
 
 % adjust the page margins
-\usepackage[scale=0.75]{geometry}
-%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
-%\setlength{\makecvheadnamewidth}{10cm}            % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+\usepackage[scale=0.7]{geometry}
+
+% Add tabularx for flexible tables
+\usepackage{tabularx}
 
 % personal data
 \name{Brian}{Benchoff}
-\title{Prototype Engineer}                               % optional, remove / comment the line if not wanted
-%\born{4 July 1776}                                 % optional, remove / comment the line if not wanted
-\address{3033 Rivera St}{94116 San Francisco}{USA}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
-\phone[mobile]{+1~(215)~690~1415}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
-%\phone[fixed]{+2~(345)~678~901}
-%\phone[fax]{+3~(456)~789~012}
-\email{benchoff@gmail.com}                               % optional, remove / comment the line if not wanted
-\homepage{https://bbenchoff.github.io/}                         % optional, remove / comment the line if not wanted
+\title{Prototype Engineer}
+\address{3033 Rivera St}{94116 San Francisco}{USA}
+\phone[mobile]{+1~(215)~690~1415}
+\email{benchoff@gmail.com}
+\homepage{https://bbenchoff.github.io/}
 
 % Social icons
-\social[linkedin]{bbenchoff}                        % optional, remove / comment the line if not wanted
-%\social[xing]{john_doe}                           % optional, remove / comment the line if not wanted
-\social[twitter]{bbenchoff}                             % optional, remove / comment the line if not wanted
-%\social[twitter]{ViolenceWorks}                             % optional, remove / comment the line if not wanted
-\social[github]{bbenchoff}                              % optional, remove / comment the line if not wanted
-%\social[gitlab]{jdoe}                              % optional, remove / comment the line if not wanted
-%\social[stackoverflow]{0000000/johndoe}            % optional, remove / comment the line if not wanted
-%\social[bitbucket]{jdoe}                           % optional, remove / comment the line if not wanted
-%\social[skype]{jdoe}                               % optional, remove / comment the line if not wanted
-%\social[orcid]{0000-0000-000-000}                  % optional, remove / comment the line if not wanted
-%\social[researchgate]{jdoe}                        % optional, remove / comment the line if not wanted
-%\social[researcherid]{jdoe}                        % optional, remove / comment the line if not wanted
-%\social[telegram]{jdoe}                            % optional, remove / comment the line if not wanted
-%\social[whatsapp]{12345678901}                     % optional, remove / comment the line if not wanted
-\social[signal]{12156901415}                       % optional, remove / comment the line if not wanted
-%\social[matrix]{@johndoe:matrix.org}               % optional, remove / comment the line if not wanted
-%\social[googlescholar]{googlescholarid}            % optional, remove / comment the line if not wanted
+\social[linkedin]{bbenchoff}
+\social[twitter]{bbenchoff}
+\social[github]{bbenchoff}
+\social[signal]{12156901415}
+
+% This is the key change: Completely redefine makecvtitle and makecvhead
+\makeatletter
+% First, we need to empty the makecvhead command to prevent double headers
+\renewcommand*{\makecvhead}{}
+
+% Define the burgundy color to match moderncv's burgundy
+\definecolor{burgundy}{rgb}{0.5,0,0}
+\definecolor{gray}{rgb}{.5,.5,.5}
 
 
-%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
-%\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
-%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+% Then redefine the makecvtitle to our new two-column format
+\renewcommand*{\makecvtitle}{%
+  % Define top spacing
+  \vspace*{-15pt}
+  % Create the two-column header using tabularx
+  \begin{tabularx}{\textwidth}{@{}X r@{}}
+    % Left column: Name and Title
+    \begin{minipage}{0.5\textwidth}
+      {\Huge\textcolor{burgundy}{\textbf{\@firstname~\@lastname}}}\\[0.4em]
+      {\large\color{gray}\textsc{\@title}}
+    \end{minipage} &
+    % Right column: Contact Info (aligned right)
+    \begin{minipage}{0.48\textwidth}
+      \raggedleft
+      \ifthenelse{\isundefined{\@addressstreet}}{}{\addresssymbol\@addressstreet\\}%
+      \ifthenelse{\isundefined{\@addresscity}}{}{\@addresscity\\}%
+      % Adding phone directly
+      \mobilesymbol+1~(215)~690~1415\\
+      \ifthenelse{\isundefined{\@email}}{}{\emailsymbol\emaillink{\@email}\\}%
+      \ifthenelse{\isundefined{\@homepage}}{}{\homepagesymbol\httplink{\@homepage}\\}%
+      % Social links - individual instead of using collectionloop
+      \ifthenelse{\isundefined{\@linkedinsocialsymbol}}{}{\@linkedinsocialsymbol\httplink{linkedin.com/in/\@linkedinsocial}\\}%
+      \ifthenelse{\isundefined{\@twittersocialsymbol}}{}{\@twittersocialsymbol\httplink{twitter.com/\@twittersocial}\\}%
+      \ifthenelse{\isundefined{\@githubsocialsymbol}}{}{\@githubsocialsymbol\httplink{github.com/\@githubsocial}\\}%
+      \ifthenelse{\isundefined{\@signalsocialsymbol}}{}{\@signalsocialsymbol\@signalsocial\\}%
+    \end{minipage}
+  \end{tabularx}
+  % Add space after the header
+  \par\vspace{2.5em}
+}
+\makeatother
 
-% bibliography adjustments (only useful if you make citations in your resume, or print a list of publications using BibTeX)
-%   to show numerical labels in the bibliography (default is to show no labels)
-%\makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
-\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}
-%   to redefine the bibliography heading string ("Publications")
-%\renewcommand{\refname}{Articles}
-
-% bibliography with mutiple entries
-%\usepackage{multibib}
-%\newcites{book,misc}{{Books},{Others}}
 %----------------------------------------------------------------------------------
 %            content
 %----------------------------------------------------------------------------------
@@ -89,10 +94,10 @@
 %\cvitem{description}{Short thesis abstract}
 
 \section{Experience}
-\subsection{Vocational}
-\cventry{2022-Present}{Prototype Engineer}{Span.io}{San Francisco}{}{Developed novel data acquisition unit for isolated thermocouple measurement using RP2040 microcontroller, C, Modbus, and Ethernet interfaces. Created comprehensive data acquisition system with Flask/React web interface and Python backend supporting multiple hardware interfaces (NIDAQ, ADAM, LabJack). Designed and fabricated specialized test rigs and prototypes using KiCad PCB design and 3D printing. Built test fixtures and cable harnesses for UL AFCI/GFCI compliance testing. Implemented V2G (Vehicle-to-Grid) home backup power solution prototype utilizing Nissan Leaf with CHAdeMO interface.\newline}
+%\subsection{Vocational}
+\cventry{2022-March 2025}{Prototype Engineer}{Span.io}{San Francisco}{}{Prototype work; CNC (HASS, Shapeoko), 3D Printing (Stratasys PolyJet, Filament) and others (laser cutter, fiber laser, molding/casting). Developed novel data acquisition unit for isolated thermocouple measurement. Created comprehensive data acquisition system with Flask/React web interface. Designed and fabricated specialized test rigs and prototypes using KiCad PCB design and 3D printing. Implemented V2G (Vehicle-to-Grid) home backup power solution prototype utilizing Nissan Leaf with CHAdeMO interface.\newline}
 \cventry{2016-2022}{Embedded Engineer, Product Designer}{Self-Employed}{San Francisco}{}{Designed, built, and sold consumer electronics. This included 3D CAD Fusion360, AutoCAD, PCB design Eagle, KiCAD, Design for Manufacturability and Design for Assembly. Closely integrated with PCB assembly, up to and including running pick and place machines. Fabrication of 3D printed and injection molded parts in plastic and silicone. Designed, marketed, and sold several successful products.\newline}
-\cventry{2018-Present}{Content Specialist}{Supplyframe}{Pasadena, CA}{}{Produced electronic design and engineering content, engaged with engineers regarding new products. Responsible for hardware projects, PCB \& firmware design. 3D modeling, injection molded and 3D printed plastic and silicone.\newline{}}
+\cventry{2018-2022}{Content Specialist}{Supplyframe}{Pasadena, CA}{}{Produced electronic design and engineering content, engaged with engineers regarding new products. Responsible for hardware projects, PCB \& firmware design. 3D modeling, injection molded and 3D printed plastic and silicone.\newline{}}
 \cventry{2011-2018}{Editor}{Hackaday}{Pasadena, CA}{}{Wrote, edited, produced content for weblog Hackaday. Designed hardware products and projects.\newline{}}
 
 %\section{Languages}
@@ -105,8 +110,8 @@
 \cvdoubleitem{Languages}{C, C++, Python, \LaTeX, SQL}{Graphic}{Adobe Photoshop, Illustrator, Premiere}
 \cvdoubleitem{Mechanical CAD}{Fusion360, AutoCAD, \newline OpenSCAD}{Platforms}{x86, 8085, AVR, ARM Cortex-M (M0 \& M4), RP2040/2350 PIO, Linux SoCs (Microchip, Allwinner)}
 \cvdoubleitem{Electronic CAD}{Altium, Eagle, KiCAD}{Misc}{Microsoft Office, 3D Printing, \newline Rapid Prototyping, Industrial Design}
-\cvdoubleitem{Embedded}{I2C, SPI, Serial, Parallel interfaces, USB, USB-C, HDMI, PCIe, eMMC}{PCB}{BGA, Down to 2/2mil trace/space, 010005 components}
-\cvdoubleitem{Embedded Linux}{Buildroot, Yocto}{Mechanical}{Injection molding in plastic and silicone, machining}
+\cvdoubleitem{Embedded}{I2C, SPI, Serial, Parallel interfaces, USB, USB-C, HDMI, PCIe, eMMC}{Embedded Linux}{Buildroot, Yocto}
+
 
 
 
