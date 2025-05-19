@@ -94,14 +94,42 @@
 %\cvitem{description}{Short thesis abstract}
 
 \section{Professional Summary}
-Versatile Prototype Engineer with 10+ years of experience in hardware development and embedded systems. Expertise in designing and fabricating functional prototypes using various manufacturing techniques. Skilled in embedded programming and mechanical CAD. Passionate about transforming innovative concepts into functional products through rapid prototyping and iterative design.
+Hardware Security and Embedded Systems Specialist with 12+ years of experience spanning secure computing, precision instrumentation, and electronics design. Expert in developing tamper-evident systems for AI infrastructure, creating ultra-low-cost embedded Linux platforms, and implementing secure communications for legacy and modern systems. Combines deep analog/digital circuit expertise with mechanical design skills to build complete, manufacturable solutions. Demonstrates versatility across multiple industries including security, automotive, biomedical, and energy systems. Passionate about transforming innovative concepts into functional products through methodical design and creative problem-solving. Proven track record of reducing costs while enhancing performance in complex embedded systems.\newline
 
 \section{Experience}
 %\subsection{Vocational}
-\cventry{2022-2025}{Electronic Engineer}{Span.io}{San Francisco}{}{Developed novel data acquisition system for thermocouple measurement, reducing costs by 90\%. Created comprehensive data acquisition web interface using Flask/React, enabling real-time monitoring for 200+ sensor channels. Designed and fabricated specialized test rigs using KiCad, 3D printing, and traditional manufacturing techniques. Implemented Vehicle-to-Grid (V2G) home backup power solution utilizing Nissan Leaf with CHAdeMO interface, providing 4kW emergency power capability. Executed prototype work using CNC (HAAS, Shapeoko), 3D Printing (Stratasys PolyJet, Filament), laser cutting, and fiber laser technologies.\newline}
-\cventry{2016-2022}{Embedded Engineer, Product Designer}{Self-Employed}{San Francisco}{}{Designed, built, and sold consumer electronics. This included 3D CAD Fusion360, AutoCAD, PCB design Eagle, KiCAD, Design for Manufacturability and Design for Assembly. Closely integrated with PCB assembly, up to and including running pick and place machines. Fabrication of 3D printed and injection molded parts in plastic and silicone. Designed, marketed, and sold several successful products.\newline}
-\cventry{2018-2022}{Content Specialist}{Supplyframe}{Pasadena}{}{Produced electronic design and engineering content, engaged with engineers regarding new products. Responsible for hardware projects, PCB \& firmware design. 3D modeling, injection molded and 3D printed plastic and silicone.\newline{}}
-\cventry{2011-2018}{Editor}{Hackaday}{Pasadena}{}{Wrote, edited, produced content for weblog Hackaday. Designed hardware products and projects.\newline{}}
+\cventry{January 2025-Present}{Hardware Security Consultant}{Tampersec}{San Francisco, CA}{}{
+Led hardware security development for tamper-evident enclaves for GPUs. Designed and implemented secure hardware architecture for AI model protection in datacenter environments. Developed custom tamper detection circuits. Created specialized test harnesses to validate physical security measures against side-channel and physical attacks. 
+\newline\newline}
+
+
+\cventry{April 2022-January, 2025}{Electronic Engineer}{Span.io}{San Francisco, CA}{}{Developed novel data acquisition system for thermocouple measurement, reducing costs by 90\%. Created comprehensive data acquisition web interface using Flask/React, enabling real-time monitoring for 200+ sensor channels. Designed and fabricated specialized test rigs using KiCad, 3D printing, and traditional manufacturing techniques. Implemented Vehicle-to-Grid (V2G) home backup power solution utilizing Nissan Leaf with CHAdeMO interface, providing 4kW emergency power capability. Executed prototype work using CNC (HAAS, Shapeoko), 3D Printing (Stratasys PolyJet, Filament), laser cutting, and fiber laser technologies.\newline\newline}
+
+\cventry{2021-2022}{Hardware Consultant}{Neusleep}{San Francisco, CA}{}{
+Led hardware development for innovative sleep EEG monitoring device. Designed low-noise analog front-end for microvolt-level brainwave signal acquisition. Implemented power-efficient embedded system with BLE connectivity for overnight monitoring. Created DFM-ready PCBs and enclosure designs for production scaling.
+\newline\newline}
+
+\cventry{2018-2021}{Content Specialist}{Supplyframe}{Pasadena, CA}{}{Produced electronic design and engineering content, engaged with engineers regarding new products. Responsible for hardware projects, PCB \& firmware design. 3D modeling, injection molded and 3D printed plastic and silicone.\newline{}}
+
+\cventry{2011-2018}{Editor}{Hackaday}{Pasadena, CA}{}{Wrote, edited, produced content for weblog Hackaday. Designed hardware products and projects.\newline{}}
+
+\section{Selected Projects}
+\cventry{2021-Present}{CAN-Based Automotive Electronics Retrofit}{}{}{}{
+Converted vintage electric vehicle from relay-based controls to modern embedded CAN architecture. Designed and fabricated custom controller boards for vehicle subsystems. Engineered three interconnected CAN networks with gateway for integrating battery management, motor control, and dashboard systems. Created LED-based digital instrument cluster with custom PCBs and firmware.
+\newline}
+
+\cventry{2025-Present}{Secure Offline AI Appliance}{}{}{}{
+Engineered compact, offline LLM inference system using datacenter GPUs paired with specialized ARM SoCs. Solved critical BAR size and IOMMU challenges by implementing NXP Layerscape LX2160A with full 64-bit address space. Created custom 12-layer PCB with impedance-controlled traces for direct SXM2 GPU integration, eliminating need for PCIe risers or ATX motherboards. Developed novel approach to transplant CUDA libraries from Jetson platforms to custom ARM hardware, enabling full CUDA acceleration without vendor lock-in. Implemented comprehensive thermal management system with custom heatsink, heat pipes, and sensor network for 300W+ thermal loads in sub-5L volume. Achieved 52-80 tokens/second on 7B-13B parameter models with zero data transmission outside the device. Designed complete product ecosystem including aluminum enclosure, power delivery, and REST API, targeting air-gapped environments and regulated-data compliance use cases.
+\newline}
+
+\cventry{2025-2025}{Ultra-Low-Cost Linux Embedded Platform}{}{}{}{
+Developed \$15 Linux handheld computer based on Allwinner F1C100s SoC. Created complete hardware design including custom keyboard interface, power management, and display controller. Built working prototype with full Linux functionality and command-line interface. Documented comprehensive BOM optimization strategy for high-volume manufacturing.
+\newline}
+
+
+\cventry{2025}{Embedded SSL Implementation for Vintage Systems}{}{}{}{
+Ported modern SSL/TLS stack to classic Mac OS 7/8/9 systems. Overcame severe platform constraints including memory limitations and lack of native entropy sources. Implemented optimization techniques for performance on 68k architecture. Created TCP socket wrapper compatible with legacy networking APIs. Enabled secure modern HTTPS connectivity on 25+ year old computer systems.
+\newline}
 
 %\section{Languages}
 %\cvitemwithcomment{Language 1}{Skill level}{Comment}
@@ -111,7 +139,7 @@ Versatile Prototype Engineer with 10+ years of experience in hardware developmen
 
 \section{Skills}
 \cvdoubleitem{Languages}{C, C++, Python, \LaTeX, SQL}{Graphic}{Adobe Photoshop, Illustrator, Premiere}
-\cvdoubleitem{Mechanical CAD}{Fusion360, AutoCAD, \newline OpenSCAD}{Platforms}{x86, 8085, AVR, ARM Cortex-M (M0 \& M4), RP2040/2350 PIO, Linux SoCs (Microchip, Allwinner)}
+\cvdoubleitem{Mechanical CAD}{Fusion360, AutoCAD, \newline OpenSCAD}{Platforms}{x86, 8085, AVR, ARM Cortex-M (M0 \& M4), RP2040/2350 PIO, Linux SoCs (Microchip, Allwinner, NXP (i.MX and Layerscape)}
 \cvdoubleitem{Electronic CAD}{Altium, Eagle, KiCAD}{Misc}{Microsoft Office, 3D Printing, \newline Rapid Prototyping, Industrial Design}
 \cvdoubleitem{Embedded}{I2C, SPI, Serial, Parallel interfaces, USB, USB-C, HDMI, PCIe, eMMC}{Embedded Linux}{Buildroot, Yocto}
 
